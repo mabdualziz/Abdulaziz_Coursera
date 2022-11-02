@@ -1,5 +1,6 @@
-#ifndef _STATS_H_
-#define _STATS_H
+#ifndef __STATS_H__
+#define __STATS_H__
 
 
-#endif /*stats.h*/
+
+#endif /* __STATS_H__ */
