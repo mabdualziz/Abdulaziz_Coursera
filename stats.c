@@ -40,32 +40,43 @@ int main(void)
     unsigned char median = 0;
 
     printf("Array before sorting: \n");
-    print_array(&test, SIZE);
-    median = find_median(&test, SIZE);
-    mean = find_mean(&test, SIZE);
-    maximum = find_maximum(&test, SIZE);
-    minimum = find_minimum(&test, SIZE);
+    print_array(test, SIZE);
+    median = find_median(test, SIZE);
+    mean = find_mean(test, SIZE);
+    maximum = find_maximum(test, SIZE);
+    minimum = find_minimum(test, SIZE);
     print_statistics(minimum, maximum, mean, median);
-    sort_array(&test, SIZE);
+    sort_array(test, SIZE);
     printf("Array after sorting: \n");
-    print_array(&test, SIZE);
+    print_array(test, SIZE);
     
     return 0;
 }
 
-void print_array (unsigned char *array, unsigned int counter){
+void print_statistics (unsigned char minimum, unsigned char maximum, float mean, unsigned char median)
+{
+    printf("The minimum number of the array is : %d \n", minimum);
+    printf("The maximum number of the array is : %d \n", maximum);
+    printf("The mean number of the array is : %f \n", mean);
+    printf("The median of the array is : %d \n", median);
+}
+
+void print_array (unsigned char *array, unsigned int counter)
+{
     for (int i=0; i<counter; i++)
         printf("%d,", *(array + i));
     printf("\n");
 }
 
-unsigned char find_median (unsigned char *array, unsigned int counter){
+unsigned char find_median (unsigned char *array, unsigned int counter)
+{
     unsigned char median = 0;
     median = *(array + (counter / 2) -1);
     return median;
 }
 
-float find_mean (unsigned char *array, unsigned int counter){
+float find_mean (unsigned char *array, unsigned int counter)
+{
     unsigned int accumulator = 0; // variable to store the accumulator value throughout the mean finding process
     float mean = 0;
     for (int i=0; i<counter; i++)
@@ -75,7 +86,8 @@ float find_mean (unsigned char *array, unsigned int counter){
     return mean;
 }
 
-unsigned char find_maximum (unsigned char *array, unsigned int counter){
+unsigned char find_maximum (unsigned char *array, unsigned int counter)
+{
     unsigned char maximum = *array; // initalize the maximum variable with the value of the first array element
     for (int i=1; i<counter; i++)
     { // start the loop from the second elemnt
@@ -86,7 +98,8 @@ unsigned char find_maximum (unsigned char *array, unsigned int counter){
     return maximum;
 }
 
-unsigned char find_minimum (unsigned char *array, unsigned int counter){
+unsigned char find_minimum (unsigned char *array, unsigned int counter)
+{
     unsigned char minimum = *array; // initalize the minimum variable with the value of the first array element
     for (int i=1; i<counter; i++)
     { // start the loop from the second elemnt
@@ -97,7 +110,8 @@ unsigned char find_minimum (unsigned char *array, unsigned int counter){
     return minimum;
 }
 
-void sort_array (unsigned char *array, unsigned int counter){
+void sort_array (unsigned char *array, unsigned int counter)
+{
     char flag = 0; //this flag is to indicate if a swap process has occurred at least once in the loop
     unsigned char temp;
     do 
